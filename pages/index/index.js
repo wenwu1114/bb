@@ -1,71 +1,75 @@
+// pages/index/index.js
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    // https://picsum.photos/1080/1920/?image=302
-    image: '/assets/background.jpg',
-    result: null
+
   },
 
-  detectImage (src) {
-    wx.showLoading({ title: '分析中...' })
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
-    const that = this
-
-    wx.uploadFile({
-      url: 'https://ai.qq.com/cgi-bin/appdemo_detectface',
-      filePath: src,
-      name: 'image_file',
-      success (res) {
-        const result = JSON.parse(res.data)
-        
-        // 检测失败
-        if (result.ret !== 0) {
-          wx.showToast({ icon: 'none', title: '找不到你的小脸蛋喽' })
-          return false
-        }
-
-        that.setData({ result: result.data.face[0] })
-        wx.hideLoading()
-      }
-    })
   },
 
-  getImage (type = ['camera','album']) {
-    const that = this
-    wx.chooseImage({
-      sizeType: ['original','compressed'],
-      sourceType: [type],
-      success(res) {
-        const image = res.tempFiles[0]
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
-        // 图片过大
-        if (image.size > 1024 * 1000) {
-          wx.showToast({ icon: 'none', title: '图片过大, 请重新拍张小的！' })
-          return false
-        }
-
-        that.setData({ image: image.path })
-        that.detectImage(image.path)
-      }
-    })
   },
 
-  handleCamera () {
-    this.getImage()
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
 
-  handleChoose () {
-    this.getImage('album')
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage () {
-    if (this.data.result) {
-      return { title: `刚刚测了自己的颜值为【${this.data.result.beauty}】你也赶紧来试试吧！` }
-    }
+  onShareAppMessage: function () {
+
+  },
+
+  /**
+   * 测颜值旧版
+   */
+  goFace1:function(){
+      wx.navigateTo({
+        url: '/pages/face1/face1',
+      })
   }
 })

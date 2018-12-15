@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/face1/face1",
+    "pages/decorate/decorate"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
