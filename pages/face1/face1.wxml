@@ -1,7 +1,7 @@
 
 <image class="image" src="{{image}}" mode="aspectFill"></image>
-<view>
-  <text>返回</text>
+<view class="fanhui" bindtap='fanhui'>
+  <text >返回</text>
 </view>
 <view class="info" wx:if="{{result}}">
   <view class="item">

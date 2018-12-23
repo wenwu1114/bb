@@ -67,5 +67,11 @@ Page({
     if (this.data.result) {
       return { title: `刚刚测了自己的颜值为【${this.data.result.beauty}】你也赶紧来试试吧！` }
     }
+  },
+
+  fanhui(){
+    wx.navigateTo({
+      url: '/pages/index/index',
+    })
   }
 })
